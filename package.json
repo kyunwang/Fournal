@@ -1,0 +1,24 @@
+{
+  "name": "fournal",
+  "version": "0.0.1",
+  "private": true,
+  "author": "Kang Yun Wang <me@kyunwang.nl> (https://www.kyunwang.nl)",
+  "license": "MIT",
+  "description": "",
+  "keywords": [],
+  "scripts": {
+    "start": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyunwang/fournal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kyunwang/fournal/issues"
+  },
+  "homepage": "https://github.com/kyunwang/fournal",
+  "devDependencies": {
+    "lerna": "^3.18.1",
+    "rimraf": "^3.0.0"
+  }
+}
