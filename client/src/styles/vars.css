@@ -1,0 +1,7 @@
+:root {
+  /* Transition config */
+  --transition-duration-short: 100;
+  --transition-duration-normal: 300;
+  --transition-duration-long: 500;
+  --transition-bezier-easeOutQuint: cubic-bezier(0.237, 1, 0.237, 1);
+}

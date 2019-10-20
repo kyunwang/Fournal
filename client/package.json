@@ -1,0 +1,38 @@
+{
+  "name": "bab-dap-pack",
+  "private": true,
+  "description": "A simplified bare-bones starter for Gatsby",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby clean && gatsby develop",
+    "develop:expose": "gatsby clean && gatsby develop --host 0.0.0.0",
+    "format": "prettier --write src/**/*.{js,jsx}",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+  },
+  "dependencies": {
+    "gatsby-plugin-postcss": "^2.1.13",
+    "gatsby-plugin-react-helmet": "^3.1.0",
+    "gatsby": "^2.10.4",
+    "postcss-import": "^12.0.1",
+    "postcss-preset-env": "^6.7.0",
+    "prop-types": "^15.7.2",
+    "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.1",
+    "react-spring": "^8.0.27",
+    "react": "^16.8.6"
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  }
+}

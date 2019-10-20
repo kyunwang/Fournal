@@ -1,0 +1,19 @@
+@import './reset.css';
+@import './vars.css';
+@import './media-queries.css';
+
+body {
+  font-family: 'josefin sans', 'work sans', sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (--media-min-medium) {
+}
