@@ -1,0 +1,16 @@
+.spotsList {
+  padding: 1.4rem;
+}
+
+.spot {
+  height: 8rem;
+  width: 16rem;
+  padding: 1.4rem;
+  // background:
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+
+  &:nth-of-type(1n + 1) {
+    // &:nth-of-type(1n + 1) {
+    margin-bottom: 1.6rem;
+  }
+}

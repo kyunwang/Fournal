@@ -1,6 +1,5 @@
 @import './reset.css';
 @import './vars.css';
-@import './media-queries.css';
 
 body {
   font-family: 'josefin sans', 'work sans', sans-serif;
@@ -13,7 +12,4 @@ button {
 a {
   text-decoration: none;
   color: inherit;
-}
-
-@media (--media-min-medium) {
 }
