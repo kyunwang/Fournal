@@ -14,7 +14,8 @@
 		"@sanity/default-login",
 		"@sanity/desk-tool",
 		"markdown",
-		"@sanity/production-preview"
+		"@sanity/production-preview",
+		"mapbox-input"
 	],
 	"parts": [
 		{
@@ -24,6 +25,10 @@
 		{
 			"implements": "part:@sanity/production-preview/resolve-production-url",
 			"path": "./resolveProductionUrl.js"
+		},
+		{
+			"name": "part:@sanity/desk-tool/structure",
+			"path": "./deskStructure/deskStructure.js"
 		}
 	]
 }

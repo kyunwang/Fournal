@@ -1,7 +1,8 @@
 export default {
-	name: 'visitPost',
-	title: 'Visit Post',
-	type: 'object',
+	name: 'foodPost',
+	title: 'Food Post',
+	type: 'document',
+	// initial
 	fields: [
 		{
 			name: 'author',
@@ -14,11 +15,6 @@ export default {
 			title: 'Title',
 			type: 'string',
 		},
-		// {
-		// 	name: 'tags',
-		// 	title: 'Tags',
-		// 	type: '',
-		// },
 		{
 			name: 'visitDate',
 			title: 'VisitDate',
@@ -32,12 +28,6 @@ export default {
 			name: 'numberOfPeople',
 			title: 'Number of People',
 			type: 'number',
-			// validation: Rule => {
-			// 	Rule.required()
-			// 		.positive()
-			// 		.integer()
-			// 		.warning('Should be a non-decimal positive number');
-			// },
 		},
 		{
 			name: 'pictures',
@@ -45,15 +35,6 @@ export default {
 			type: 'array',
 			of: [{ type: 'picture' }],
 		},
-		// {
-		//   type: 'array',
-		//   name: 'slides',
-		//   title: 'Slides',
-		//   of: [{ type: 'image' }],
-		//   options: {
-		//     layout: 'grid'
-		//   }
-		// },
 		{
 			name: 'description',
 			title: 'Description',
@@ -69,7 +50,6 @@ export default {
 			name: 'price',
 			title: 'Price',
 			type: 'number',
-			// Validation to two decimals
 		},
 	],
 };

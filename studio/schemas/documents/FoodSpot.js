@@ -12,45 +12,6 @@ export default {
 			title: 'Spot Name',
 			type: 'string',
 		},
-		// {
-		// 	name: 'country',
-		// 	title: 'Country',
-		// 	type: 'string',
-		// },
-		{
-			name: 'city',
-			title: 'City',
-			type: 'string',
-		},
-		{
-			name: 'url',
-			title: 'Store URL',
-			type: 'url',
-		},
-		{
-			name: 'coordinates',
-			title: 'Coordinates',
-			type: 'geopoint',
-			required: false,
-		},
-		{
-			name: 'description',
-			title: 'Description',
-			type: 'text',
-		},
-		{
-			// Sort to earliest
-			name: 'visits',
-			title: 'Visits',
-			type: 'array',
-			of: [{ type: 'visitPost' }],
-		},
-		// {
-		// 	name: 'keywords',
-		// 	title: 'Keywords',
-		// 	type: 'array',
-		// 	of: [{ type: 'string' }],
-		// },
 		{
 			name: 'recommended',
 			title: 'Recommended',
@@ -60,6 +21,42 @@ export default {
 			name: 'favorite',
 			title: 'Favorite',
 			type: 'boolean',
+		},
+		{
+			name: 'location',
+			title: 'Location',
+			type: 'foodSpotLocation',
+		},
+		{
+			name: 'description',
+			title: 'Description',
+			type: 'text',
+		},
+		{
+			name: 'url',
+			title: 'Store URL',
+			type: 'url',
+		},
+		{
+			// Sort to earliest
+			name: 'post',
+			title: 'Posts',
+			type: 'array',
+			of: [{ type: 'reference', to: [{ type: 'foodPost' }] }],
+		},
+		// TODO: remove
+		{
+			name: 'country',
+			title: 'Country',
+			type: 'string',
+		},
+		// TODO: REMOVE
+		{
+			// Sort to earliest
+			name: 'visits',
+			title: 'Visits (old - migrate)',
+			type: 'array',
+			of: [{ type: 'visitPost' }],
 		},
 	],
 };
