@@ -2,6 +2,10 @@ export default {
 	name: 'spot',
 	title: 'Spot',
 	type: 'document',
+	initialValue: {
+		recommended: false,
+		favorite: false,
+	},
 	fields: [
 		{
 			name: 'name',
@@ -23,42 +27,12 @@ export default {
 			title: 'Store URL',
 			type: 'url',
 		},
-		// {
-		// 	name: 'coordinates',
-		// 	title: 'Coordinates',
-		// 	type: 'geopoint',
-		// },
-		// {
-		// 	name: 'rating',
-		// 	title: 'Rating',
-		// 	type: 'number',
-		// validation: Rule =>
-		// 	Rule.custom(rating => {
-		// 		if (rating % 0.5) {
-		// 			return Rule.min(1)
-		// 				.max(10)
-		// 				.error('Ratings should be between 1 and 10');
-		// 		}
-
-		// 		return Rule.error('Ratings should be in steps of 0.5');
-		// 	}),
-		// type: 'string',
-		// options: {
-		// 	list: [
-		// 		{title: 'one star'}
-		// 	]
-		// }
-		// },
-		// {
-		// 	name: 'pricing',
-		// 	title: 'Pricing',
-		// 	type: 'number',
-		// 	validation: Rule =>
-		// 		Rule.required()
-		// 			.min(1)
-		// 			.max(5)
-		// 			.error('Pricings should be between 1 and 5'),
-		// },
+		{
+			name: 'coordinates',
+			title: 'Coordinates',
+			type: 'geopoint',
+			required: false,
+		},
 		{
 			name: 'description',
 			title: 'Description',
@@ -88,8 +62,4 @@ export default {
 			type: 'boolean',
 		},
 	],
-	initialValue: {
-		recommended: false,
-		favorite: false,
-	},
 };
