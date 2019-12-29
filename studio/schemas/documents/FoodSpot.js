@@ -1,5 +1,5 @@
 export default {
-	name: 'spot',
+	name: 'foodSpot',
 	title: 'Spot',
 	type: 'document',
 	initialValue: {
@@ -43,14 +43,6 @@ export default {
 			title: 'Posts',
 			type: 'array',
 			of: [{ type: 'reference', to: [{ type: 'foodPost' }] }],
-		},
-		// TODO: REMOVE
-		{
-			// Sort to earliest
-			name: 'visits',
-			title: 'Visits (old - migrate)',
-			type: 'array',
-			of: [{ type: 'visitPost' }],
 		},
 	],
 };

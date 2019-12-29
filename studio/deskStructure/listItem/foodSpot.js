@@ -11,9 +11,9 @@ const foodSpot = S.listItem()
 				// First list item
 				S.listItem()
 					.title('Spots')
-					.schemaType('spot') // TODO: Change to foodspot
+					.schemaType('foodSpot')
 					// Open with all in a list of document type 'spot'
-					.child(S.documentTypeList('spot')),
+					.child(S.documentTypeList('foodSpot')),
 				S.listItem()
 					.title('Spots by Country')
 					.child(
@@ -27,7 +27,7 @@ const foodSpot = S.listItem()
 									.title('Spots')
 									// Using Groq filter to get documents
 									.filter(
-										`_type == "spot" &&																			// Get all of type spot
+										`_type == "foodSpot" &&																	// Get all of type spot
 											references(  																					// Which have have references of a specific city
 												*[_type == "city" && references($countryID)]._id 		// Which are from a specific country
 											)`
@@ -43,7 +43,7 @@ const foodSpot = S.listItem()
 							.child(cityID =>
 								S.documentList()
 									.title('Spots')
-									.filter(`_type == "spot" && references($cityID)`)
+									.filter(`_type == "foodSpot" && references($cityID)`)
 									.params({ cityID })
 							)
 					),

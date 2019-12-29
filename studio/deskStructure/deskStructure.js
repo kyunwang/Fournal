@@ -6,11 +6,11 @@ import listSelector from './listItem/listSelector';
 import foodPost from './listItem/foodPost';
 
 const fieldsToFilterOut = [
-	'spot',
 	'foodPost',
+	'foodSpot',
 	// Selectors
-	'country',
 	'city',
+	'country',
 ];
 
 const deskStructure = () =>
@@ -18,9 +18,9 @@ const deskStructure = () =>
 		.title('Content')
 		.items([
 			// New list item on first level
+			foodPost,
 			foodSpot,
 			listSelector,
-			foodPost,
 			// Filter out lists and put rest of the documents in
 			...S.documentTypeListItems().filter(
 				listItem => !fieldsToFilterOut.includes(listItem.getId())
