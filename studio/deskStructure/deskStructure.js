@@ -1,7 +1,7 @@
 // About Structure Builder: https://www.sanity.io/docs/how-it-works
 import S from '@sanity/desk-tool/structure-builder';
 
-const filteredFields = [
+const fieldsTofilterOut = [
 	'spot',
 	'foodPost',
 	// Selectors
@@ -23,24 +23,39 @@ const spots = S.listItem()
 					.schemaType('spot') // TODO: Change to foodspot
 					// Open with all in a list of document type 'spot'
 					.child(S.documentTypeList('spot')),
-				// TODO: spots by country / city
-				// Show all
 				S.listItem()
 					.title('Spots by Country')
-					.child(countryId => {
-						console.log(countryId);
-
-						// Load new document list
-						return (
-							S.documentList()
-								.title('Spots')
-								// Using Groq filter to get documents
-								// Checks for Spots with countryId in its reference array
-								.filter(`_type == "spot" && $countryId in spots[]._ref`)
-								// .filter(`_type == "foodPost" && $countryId in foodPosts[]._ref`)
-								.params({ countryId })
-						);
-					}),
+					.child(
+						// List the spots
+						S.documentTypeList('country')
+							.title('Spots by Country')
+							// Pass id selection down to the next pane
+							.child(countryID =>
+								// Load new document list
+								S.documentList()
+									.title('Spots')
+									// Using Groq filter to get documents
+									.filter(
+										`_type == "spot" &&																			// Get all of type spot
+											references(  																					// Which have have references of a specific city
+												*[_type == "city" && references($countryID)]._id 		// Which are from a specific country
+											)`
+									)
+									.params({ countryID })
+							)
+					),
+				S.listItem()
+					.title('Spots by City')
+					.child(
+						S.documentTypeList('city')
+							.title('Spots by City')
+							.child(cityID =>
+								S.documentList()
+									.title('Spots')
+									.filter(`_type == "spot" && references($cityID)`)
+									.params({ cityID })
+							)
+					),
 			])
 	);
 
@@ -58,6 +73,18 @@ const selectors = S.listItem()
 					.title('Cities')
 					.schemaType('city')
 					.child(S.documentTypeList('city')),
+				S.listItem()
+					.title('Cities by Country')
+					.child(
+						S.documentTypeList('country')
+							.title('Cities by Country')
+							.child(countryID =>
+								S.documentList()
+									.title('Cities')
+									.filter(`_type == "city" && references($countryID)`)
+									.params({ countryID })
+							)
+					),
 			])
 	);
 
@@ -73,7 +100,7 @@ const deskStructure = () =>
 				.schemaType('foodPost')
 				.child(S.documentTypeList('foodPost')),
 			...S.documentTypeListItems().filter(
-				listItem => !filteredFields.includes(listItem.getId())
+				listItem => !fieldsTofilterOut.includes(listItem.getId())
 			),
 		]);
 
