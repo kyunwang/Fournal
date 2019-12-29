@@ -1,4 +1,5 @@
 import Author from './Author';
-import Spot from './Spot';
+import FoodSpot from './FoodSpot';
+import FoodPost from './FoodPost';
 
-export { Author, Spot };
+export { Author, FoodSpot, FoodPost };

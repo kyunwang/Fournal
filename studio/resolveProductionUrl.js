@@ -4,7 +4,7 @@
 const isDraft = id => id.includes('drafts');
 
 function resolveProductionUrl(document) {
-	console.log(document);
+	// console.log(document);
 
 	// First, we select a specific type of document
 	// if (document._type === 'page') {

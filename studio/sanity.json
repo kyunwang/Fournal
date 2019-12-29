@@ -2,7 +2,7 @@
 	"root": true,
 	"api": {
 		"projectId": "jaf9u48k",
-		"dataset": "production"
+		"dataset": "main"
 	},
 	"project": {
 		"name": "Fournal"
@@ -14,7 +14,9 @@
 		"@sanity/default-login",
 		"@sanity/desk-tool",
 		"markdown",
-		"@sanity/production-preview"
+		"@sanity/production-preview",
+		"mapbox-input",
+		"@sanity/vision"
 	],
 	"parts": [
 		{
@@ -24,6 +26,10 @@
 		{
 			"implements": "part:@sanity/production-preview/resolve-production-url",
 			"path": "./resolveProductionUrl.js"
+		},
+		{
+			"name": "part:@sanity/desk-tool/structure",
+			"path": "./deskStructure/deskStructure.js"
 		}
 	]
 }

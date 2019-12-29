@@ -5,16 +5,26 @@ import createSchema from 'part:@sanity/base/schema-creator';
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type';
 
-import { Author, Spot } from './documents';
-import { OrderItem, VisitPost, Picture } from './objects';
-// import * as Documents from './documents';
-// import * as Objects from './objects';
+import { Author, FoodSpot, FoodPost } from './documents';
+import { City, Country } from './documents/selectors';
+import { OrderItem, VisitPost, Picture, FoodSpotLocation } from './objects';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
 	// We name our schema
 	name: 'default',
-	// Then proceed to concatenate our document type
-	// to the ones provided by any plugins that are installed
-	types: schemaTypes.concat([Author, Spot, OrderItem, VisitPost, Picture]),
+	types: schemaTypes.concat([
+		// Documents
+		Author,
+		FoodSpot,
+		FoodPost,
+		// Selectors
+		City,
+		Country,
+		// Objects
+		OrderItem,
+		VisitPost,
+		Picture,
+		FoodSpotLocation,
+	]),
 });
