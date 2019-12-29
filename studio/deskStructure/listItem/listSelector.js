@@ -1,3 +1,5 @@
+import S from '@sanity/desk-tool/structure-builder';
+
 const listSelector = S.listItem()
 	.title('Selectors List')
 	.child(

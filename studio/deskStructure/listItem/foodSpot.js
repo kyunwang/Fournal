@@ -1,3 +1,5 @@
+import S from '@sanity/desk-tool/structure-builder';
+
 // .listItem - Define is item of a list
 const foodSpot = S.listItem()
 	.title('Food Spots')

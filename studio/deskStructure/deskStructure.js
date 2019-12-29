@@ -3,8 +3,9 @@ import S from '@sanity/desk-tool/structure-builder';
 
 import foodSpot from './listItem/foodSpot';
 import listSelector from './listItem/listSelector';
+import foodPost from './listItem/foodPost';
 
-const fieldsTofilterOut = [
+const fieldsToFilterOut = [
 	'spot',
 	'foodPost',
 	// Selectors
@@ -19,12 +20,10 @@ const deskStructure = () =>
 			// New list item on first level
 			foodSpot,
 			listSelector,
-			S.listItem()
-				.title('Food Posts')
-				.schemaType('foodPost')
-				.child(S.documentTypeList('foodPost')),
+			foodPost,
+			// Filter out lists and put rest of the documents in
 			...S.documentTypeListItems().filter(
-				listItem => !fieldsTofilterOut.includes(listItem.getId())
+				listItem => !fieldsToFilterOut.includes(listItem.getId())
 			),
 		]);
 
