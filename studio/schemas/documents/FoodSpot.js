@@ -44,12 +44,6 @@ export default {
 			type: 'array',
 			of: [{ type: 'reference', to: [{ type: 'foodPost' }] }],
 		},
-		// TODO: remove
-		{
-			name: 'country',
-			title: 'Country',
-			type: 'string',
-		},
 		// TODO: REMOVE
 		{
 			// Sort to earliest
