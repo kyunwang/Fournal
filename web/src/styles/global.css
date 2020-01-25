@@ -2,7 +2,7 @@
 @import './vars.css';
 
 body {
-  font-family: 'josefin sans', 'work sans', sans-serif;
+  font-family: 'gangster grotesk', 'work sans', sans-serif;
 }
 
 button {
@@ -12,4 +12,8 @@ button {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+h2 {
+  font-size: 1.2rem;
 }
