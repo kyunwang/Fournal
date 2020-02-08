@@ -1,18 +1,25 @@
-import styles from './List.module.scss';
+import styles from '../List.module.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
+import ListCard from '../ListCard/ListCard';
+import { replaceAllNonCharacters } from '../../../utils/utils';
 
 const SpotList = ({ spots }) => {
   return (
-    <ul className={styles.spotsList}>
-      {/* Cards */}
+    <ul className={styles.list}>
       {spots.map(spot => {
-        const { name } = spot.node;
+        const { name, description, location } = spot.node;
+        const slug = replaceAllNonCharacters(name, '-');
 
         return (
-          <li className={styles.spot}>
-            <h2>{name}</h2>
-          </li>
+          <Link to={`foodspot/${slug}`}>
+            <ListCard
+              info={location.city.name}
+              title={name}
+              description={description}
+            />
+          </Link>
         );
       })}
     </ul>

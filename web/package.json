@@ -1,43 +1,44 @@
 {
-  "name": "fournal-web",
-  "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
-  "version": "0.0.1",
-  "license": "MIT",
-  "scripts": {
-    "build": "gatsby build",
-    "develop:expose": "npm run empty-cache && gatsby develop --host 0.0.0.0",
-    "develop": "npm run empty-cache && gatsby develop",
-    "empty-cache": "gatsby clean",
-    "format": "prettier --write src/**/*.{js,jsx}",
-    "serve": "gatsby serve",
-    "start": "npm run develop:expose",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
-  },
-  "dependencies": {
-    "gatsby": "^2.17.4",
-    "gatsby-plugin-create-client-paths": "^2.1.15",
-    "gatsby-plugin-react-helmet": "^3.1.13",
-    "gatsby-plugin-sass": "^2.1.20",
-    "gatsby-source-sanity": "^5.0.4",
-    "node-sass": "^4.13.0",
-    "postcss-custom-properties": "^9.0.2",
-    "postcss-import": "^12.0.1",
-    "postcss-preset-env": "^6.7.0",
-    "prop-types": "^15.7.2",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "react-helmet": "^5.2.1",
-    "react-spring": "^8.0.27"
-  },
-  "devDependencies": {
-    "prettier": "^1.18.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "bugs": {
-    "url": ""
-  }
+	"name": "fournal-web",
+	"private": true,
+	"description": "A simplified bare-bones starter for Gatsby",
+	"version": "0.0.1",
+	"license": "MIT",
+	"scripts": {
+		"build": "node -r esm gatsby build",
+		"develop:expose": "npm run empty-cache && node -r esm ./node_modules/.bin/gatsby develop --host 0.0.0.0",
+		"develop": "npm run empty-cache && node -r esm ./node_modules/.bin/gatsby develop",
+		"empty-cache": "gatsby clean",
+		"format": "prettier --write src/**/*.{js,jsx}",
+		"serve": "node -r esm ./node_modules/.bin/gatsby serve",
+		"start": "npm run develop:expose",
+		"test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+	},
+	"dependencies": {
+		"gatsby": "^2.17.4",
+		"gatsby-plugin-create-client-paths": "^2.1.15",
+		"gatsby-plugin-react-helmet": "^3.1.13",
+		"gatsby-plugin-sass": "^2.1.20",
+		"gatsby-source-sanity": "^5.0.4",
+		"node-sass": "^4.13.0",
+		"postcss-custom-properties": "^9.0.2",
+		"postcss-import": "^12.0.1",
+		"postcss-preset-env": "^6.7.0",
+		"prop-types": "^15.7.2",
+		"react": "^16.11.0",
+		"react-dom": "^16.11.0",
+		"react-helmet": "^5.2.1",
+		"react-spring": "^8.0.27"
+	},
+	"devDependencies": {
+		"esm": "^3.2.25",
+		"prettier": "^1.18.2"
+	},
+	"repository": {
+		"type": "git",
+		"url": ""
+	},
+	"bugs": {
+		"url": ""
+	}
 }
