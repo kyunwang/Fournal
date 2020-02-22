@@ -9,11 +9,11 @@ const SpotList = ({ spots }) => {
   return (
     <ul className={styles.list}>
       {spots.map(spot => {
-        const { name, description, location } = spot.node;
+        const { name, description, location, id } = spot.node;
         const slug = replaceAllNonCharacters(name, '-');
 
         return (
-          <Link to={`foodspot/${slug}`}>
+          <Link to={`/foodspot/${slug}`} key={id}>
             <ListCard
               info={location.city.name}
               title={name}

@@ -35,7 +35,7 @@ export const query = graphql`
   }
 `;
 
-const FoodSpotPage = ({ data: { foodSpot } }) => {
+const FoodSpotPage = ({ data: { foodSpot }, location }) => {
   const {
     name,
     location: {
@@ -50,7 +50,7 @@ const FoodSpotPage = ({ data: { foodSpot } }) => {
     <Container>
       <h1>Foodspot</h1>
       <p>{name}</p>
-      <PostList posts={posts} />
+      <PostList posts={posts} currentPath={location.pathname} />
     </Container>
   );
 };

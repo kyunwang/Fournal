@@ -17,3 +17,7 @@ a {
 h2 {
   font-size: 1.2rem;
 }
+
+p {
+	font-weight: 300;
+}
