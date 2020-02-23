@@ -13,7 +13,7 @@ const SpotList = ({ spots }) => {
         const slug = replaceAllNonCharacters(name, '-');
 
         return (
-          <Link to={`/foodspot/${slug}`} key={id}>
+          <Link to={`/foodspot/${slug}`} key={id} state={{ fromList: true }}>
             <ListCard
               info={location.city.name}
               title={name}

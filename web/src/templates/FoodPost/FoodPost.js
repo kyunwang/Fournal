@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import Container from '../../components/layout/Container';
 import PostList from '../../components/Spots/PostList/PostList';
 import PostDetail from './PostDetail/PostDetail';
+import Header from '../../components/layout/Header/Header';
 
 export const query = graphql`
   # query foodPostPageQuery($foodSpotId: String!, $foodPostId: String!) {
@@ -22,14 +23,23 @@ export const query = graphql`
       visitDate(formatString: "MM-YYYY")
       description
     }
+		# foodSpot: sanityFoodSpot($foodSpotId: String!) {}
     # allFoodPosts: allSanityFoodPost(filter: {id: {ne: $foodPostId}}) {}
     # allFoodPosts: sanityFoodSpot(id: { eq: $foodSpotId }) {}
   }
 `;
 
-const FoodPostPage = ({ data: { foodPost } }) => {
+const FoodPostPage = (props) => {
+	const { data: { foodPost }, location } = props;
+	const { state = {} } = location;
+	
   return (
     <Container>
+			<Header
+				title={foodPost.title} 
+				// subTitle={foodPost} 
+				fromList={state.fromList}
+			/>
       <PostDetail post={foodPost} />
     </Container>
   );

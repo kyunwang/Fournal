@@ -15,7 +15,7 @@ const PostList = ({ posts, currentPath }) => {
         const slug = replaceAllNonCharacters(title, '-');
 
         return (
-          <Link key={id} to={`${currentPath}/${slug}`}>
+          <Link key={id} to={`${currentPath}/${slug}`} state={{ fromList: true }}>
             <ListCard info={date} title={title} description={description} />
           </Link>
         );

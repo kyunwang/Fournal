@@ -2,21 +2,23 @@ import styles from './PostDetail.module.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 import NonStretchedImage from '../../../components/general/NonStretchedImage';
+import Header from '../../../components/layout/Header/Header';
 
 const PostDetail = ({
   post: { pictures, price, title, visitDate, description },
 }) => {
   return (
     <div>
+			{/* <Header/>
       <header className={styles.header}>
         <h2>{title}</h2>
         <p>store name</p>
-      </header>
+      </header> */}
 
-			<NonStretchedImage className={styles.highlightWrapper} fluid={pictures[0].asset.fluid} />
+			{pictures.length > 0 &&  <NonStretchedImage className={styles.highlightWrapper} fluid={pictures[0].asset.fluid} />}
 
       <div className={styles.listWrapper}>
-        <article className={styles.activeCard}>
+        <section className={`${styles.card} ${styles.active}`}>
           <span>{visitDate}</span>
           <h3>{title}</h3>
           <p>{description}</p>
@@ -27,7 +29,7 @@ const PostDetail = ({
             ))}
           </footer>
           {/* button to expand and show ordered items? */}
-        </article>
+        </section>
       </div>
     </div>
   );

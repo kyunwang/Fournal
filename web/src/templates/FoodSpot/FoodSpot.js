@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Container from '../../components/layout/Container';
 import PostList from '../../components/Spots/PostList/PostList';
+import Header from '../../components/layout/Header/Header';
 
 export const query = graphql`
   query foodSpotPageQuery($foodSpotId: String!) {
@@ -35,7 +36,11 @@ export const query = graphql`
   }
 `;
 
-const FoodSpotPage = ({ data: { foodSpot }, location }) => {
+const FoodSpotPage = (props) => {
+	console.log(props);
+	const { data: { foodSpot }, location } = props;
+	const { state = {} } = location;
+	
   const {
     name,
     location: {
@@ -48,8 +53,11 @@ const FoodSpotPage = ({ data: { foodSpot }, location }) => {
 
   return (
     <Container>
-      <h1>Foodspot</h1>
-      <p>{name}</p>
+			<Header
+				title={name}
+				subTitle='Visits'
+				fromList={state.fromList}
+			/>
       <PostList posts={posts} currentPath={location.pathname} />
     </Container>
   );
