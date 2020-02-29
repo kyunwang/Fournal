@@ -5,10 +5,11 @@ import Container from '../../components/layout/Container';
 import PostList from '../../components/Spots/PostList/PostList';
 import PostDetail from './PostDetail/PostDetail';
 import Header from '../../components/layout/Header/Header';
+import { replaceAllNonCharacters } from '../../utils/utils';
 
 export const query = graphql`
   # query foodPostPageQuery($foodSpotId: String!, $foodPostId: String!) {
-  query foodPostPageQuery($foodPostId: String!) {
+  query foodPostPageQuery($foodPostId: String!, $foodSpotId: String!) {
     foodPost: sanityFoodPost(id: { eq: $foodPostId }) {
       id
       pictures {
@@ -23,22 +24,23 @@ export const query = graphql`
       visitDate(formatString: "MM-YYYY")
       description
     }
-		# foodSpot: sanityFoodSpot($foodSpotId: String!) {}
-    # allFoodPosts: allSanityFoodPost(filter: {id: {ne: $foodPostId}}) {}
-    # allFoodPosts: sanityFoodSpot(id: { eq: $foodSpotId }) {}
+		foodSpot: sanityFoodSpot(id: { eq: $foodSpotId}) {
+			name
+		}
   }
 `;
 
-const FoodPostPage = (props) => {
-	const { data: { foodPost }, location } = props;
-	const { state = {} } = location;
+const FoodPostPage = ({ data: { foodPost, foodSpot }}) => {
+	const spotSlug = replaceAllNonCharacters(foodSpot.name, '-');
 	
   return (
-    <Container>
+    <Container
+			hasBackButton
+			backURL={`/foodspot/${spotSlug}`}
+		>
 			<Header
 				title={foodPost.title} 
-				// subTitle={foodPost} 
-				fromList={state.fromList}
+				subTitle={foodSpot.name} 
 			/>
       <PostDetail post={foodPost} />
     </Container>

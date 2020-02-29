@@ -11,12 +11,12 @@ const PostList = ({ posts, currentPath }) => {
   return (
     <ul className={styles.list}>
       {posts.map(post => {
-        const { title, id, date, description } = post;
+        const { title, id, visitDate, description } = post;
         const slug = replaceAllNonCharacters(title, '-');
 
         return (
           <Link key={id} to={`${currentPath}/${slug}`} state={{ fromList: true }}>
-            <ListCard info={date} title={title} description={description} />
+            <ListCard info={visitDate} title={title} description={description} />
           </Link>
         );
       })}

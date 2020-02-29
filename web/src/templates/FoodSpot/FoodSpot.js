@@ -29,7 +29,7 @@ export const query = graphql`
         id
         title
         description
-        date: _updatedAt(formatString: "MM-YYYY")
+        visitDate(formatString: "MM-YYYY")
         _createdAt
       }
     }
@@ -37,10 +37,8 @@ export const query = graphql`
 `;
 
 const FoodSpotPage = (props) => {
-	console.log(props);
 	const { data: { foodSpot }, location } = props;
-	const { state = {} } = location;
-	
+
   const {
     name,
     location: {
@@ -56,7 +54,6 @@ const FoodSpotPage = (props) => {
 			<Header
 				title={name}
 				subTitle='Visits'
-				fromList={state.fromList}
 			/>
       <PostList posts={posts} currentPath={location.pathname} />
     </Container>

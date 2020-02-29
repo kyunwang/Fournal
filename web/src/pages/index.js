@@ -19,6 +19,9 @@ export const query = graphql`
               name
             }
           }
+					posts: post {
+						id
+					}
         }
       }
     }
@@ -29,9 +32,8 @@ export default ({ data: { spots }, error }) => {
   return (
     <Container>
 			<Header
-				hasBackButton={false}
-				title="Title"
-				subTitle="subtitle"
+				title="Fournal"
+				subTitle="Inconsistent food journaling"
 			/>
       <SpotList spots={spots.edges} />
     </Container>

@@ -1,0 +1,19 @@
+.wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	bottom: .6rem;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 2.4rem;
+	width: 2.4rem;
+	background: #fff;
+	border-radius: 50%;
+
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.24), 0 10px 10px rgba(0, 0, 0, 0.24);
+
+	img {
+		width: 10px;
+	}
+}

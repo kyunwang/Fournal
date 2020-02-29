@@ -8,12 +8,12 @@ import { replaceAllNonCharacters } from '../../../utils/utils';
 const SpotList = ({ spots }) => {
   return (
     <ul className={styles.list}>
-      {spots.map(spot => {
+      {spots.filter(spot => spot.node.posts.length > 0).map(spot => {  
         const { name, description, location, id } = spot.node;
         const slug = replaceAllNonCharacters(name, '-');
 
         return (
-          <Link to={`/foodspot/${slug}`} key={id} state={{ fromList: true }}>
+          <Link to={`/foodspot/${slug}`} key={id}>
             <ListCard
               info={location.city.name}
               title={name}
