@@ -1,10 +1,34 @@
 import styles from './Container.module.scss';
+import PropTypes from 'prop-types';
 import React from 'react';
+import BackButton from '../general/Buttons/BackButton/BackButton';
 
-const Container = props => (
-  <section {...props} className={styles.container}>
-    {props.children}
-  </section>
-);
+
+const Container = props => {
+	const {
+		children,
+		backURL,
+		hasBackButton
+	} = props;
+
+	return (
+		<section className={styles.container}>
+			{children}
+			{/* <BackButton
+				backURL={backURL}
+				hasBackButton={hasBackButton}
+			/> */}
+		</section>
+)};
+
+Container.propTypes = {
+	hasBackButton: PropTypes.bool,
+	backURL: PropTypes.string,
+}
+
+Container.defaultPropr = {
+	hasBackButton: false,
+	backURL: '/',
+}
 
 export default Container;

@@ -4,8 +4,8 @@ export default {
 	type: 'object',
 	fields: [
 		{
-			name: 'location',
-			title: 'Location',
+			name: 'city',
+			title: 'City',
 			type: 'reference',
 			to: [{ type: 'city' }], // Includes country
 		},
