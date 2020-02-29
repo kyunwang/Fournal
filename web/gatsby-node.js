@@ -9,25 +9,22 @@ import * as path from 'path';
 import { replaceAllNonCharacters } from './src/utils/utils';
 
 export const createPages = async ({ actions, graphql }) => {
-  const { data } = await graphql(`
+	const { data } = await graphql(`
     query {
       allSanityFoodSpot {
         nodes {
           id
-          name
-        }
-      }
-
-      allSanityFoodPost {
-        nodes {
-          id
-          title
+					name
+					posts: post {
+						id
+						title
+					}
         }
       }
     }
   `);
 
-  data.allSanityFoodSpot.nodes.forEach(({ id, name }) => {
+  data.allSanityFoodSpot.nodes.forEach(({ id, name, posts }) => {
     const spotSlug = replaceAllNonCharacters(name, '-');
 
     actions.createPage({
@@ -38,7 +35,7 @@ export const createPages = async ({ actions, graphql }) => {
       },
     });
 
-    data.allSanityFoodPost.nodes.forEach(post => {
+    posts.forEach(post => {
       const visitSlug = replaceAllNonCharacters(post.title, '-');
 
       actions.createPage({
@@ -50,5 +47,11 @@ export const createPages = async ({ actions, graphql }) => {
         },
       });
     });
-  });
+	});
+	
+	actions.createRedirect({
+		fromPath: '/foodspot',
+		toPath: '/',
+		isPermanent: true,
+	});
 };
