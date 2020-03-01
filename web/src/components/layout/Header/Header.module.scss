@@ -6,3 +6,11 @@
 		margin-bottom: .8rem;
 	}
 }
+
+@media all and (min-width: 30rem) {
+	.wrapper {
+		h2 {
+		font-size: 2rem;
+		}
+	}
+}

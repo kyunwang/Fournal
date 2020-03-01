@@ -1,5 +1,4 @@
 /**
-import { replaceAllNonCharacters } from './src/utils/utils';
  * Implement Gatsby's Node APIs in this file.
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
@@ -29,7 +28,7 @@ export const createPages = async ({ actions, graphql }) => {
 
     actions.createPage({
       path: `foodspot/${spotSlug}`,
-      component: path.resolve(`./src/templates/FoodSpot/FoodSpot.js`),
+      component: path.resolve(`./src/templates/FoodSpotPage/FoodSpotPage.js`),
       context: {
         foodSpotId: id,
       },
@@ -40,7 +39,7 @@ export const createPages = async ({ actions, graphql }) => {
 
       actions.createPage({
         path: `foodspot/${spotSlug}/${visitSlug}`,
-        component: path.resolve(`./src/templates/FoodPost/FoodPost.js`),
+        component: path.resolve(`./src/templates/FoodPostPage/FoodPostPage.js`),
         context: {
           foodSpotId: id,
           foodPostId: post.id,

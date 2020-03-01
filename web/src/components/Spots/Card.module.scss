@@ -1,14 +1,9 @@
 .card {
   height: 8rem;
   width: 100%;
-  padding: 1rem 1.6rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.12);
-  // box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-
-  &:nth-of-type(1n + 1) {
-    // &:nth-of-type(1n + 1) {
-    margin-bottom: 1.2rem;
-  }
+	padding: 1rem 1.6rem;
+	// box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.12);
+	// transition: box-shadow .3s ease-in;
 
   p {
     overflow: hidden;
@@ -22,4 +17,11 @@
 		font-size: 0.8rem;
 		font-weight: 300;
   }
+}
+
+@media all and (min-width: 30rem) {
+	.card {
+		// width: 24rem;
+		width: 20rem;
+	}
 }
