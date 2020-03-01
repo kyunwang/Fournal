@@ -5,7 +5,7 @@
 	"version": "0.0.1",
 	"license": "MIT",
 	"scripts": {
-		"build": "node -r esm gatsby build",
+		"build": "node -r esm ./node_modules/.bin/gatsby build",
 		"develop:expose": "npm run empty-cache && node -r esm ./node_modules/.bin/gatsby develop --host 0.0.0.0",
 		"develop": "npm run empty-cache && node -r esm ./node_modules/.bin/gatsby develop",
 		"empty-cache": "gatsby clean",

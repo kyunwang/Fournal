@@ -1,3 +1,3 @@
-# A gatsby starter
+# Fournal front-end
 
-A gatsby js starter for some projects.... and tests. This is WIP (Work in progress). Waiting additions to be added when encountered.
+The simple front-end made using gatsby. So simple, making me overthink things.
