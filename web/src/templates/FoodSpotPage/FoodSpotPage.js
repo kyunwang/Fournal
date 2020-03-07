@@ -2,44 +2,36 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Container from '../../components/layout/Container';
-import PostList from '../../components/Spots/PostList/PostList';
 import Header from '../../components/layout/Header/Header';
-import { OnePageContextConsumer } from '../../components/context/OnePageContext';
+import { OnePageContextConsumer } from '../../context/OnePageContext';
+import SpotList from '../../components/Spots/SpotList/SpotList';
+import PostList from '../../components/Spots/PostList/PostList';
 
 export const query = graphql`
 	query foodSpotPageQuery($foodSpotId: String!) {
+		spots: allSanityFoodSpot {
+			totalCount
+			edges {
+				node {
+					...FoodSpotInformation
+					...FoodSpotPost
+				}
+			}
+		}
+
 		foodSpot: sanityFoodSpot(id: { eq: $foodSpotId }) {
-			id
-			name
-			url
-			location {
-				city {
-					name
-				}
-				country: city {
-					country {
-						name
-					}
-				}
-				coordinates {
-					lat
-					lng
-				}
-			}
-			posts: post {
-				id
-				title
-				description
-				visitDate(formatString: "MM-YYYY")
-			}
+			...FoodSpotInformation
+			...FoodSpotLocation
+			...FoodSpotPost
 		}
 	}
 `;
 
 const FoodSpotPage = props => {
 	const {
-		data: { foodSpot },
+		data: { spots, foodSpot },
 		location,
+		pathContext,
 	} = props;
 
 	const {
@@ -55,11 +47,18 @@ const FoodSpotPage = props => {
 	return (
 		<OnePageContextConsumer>
 			{data => {
-				console.log('spots', data);
+				console.log('spots', data, location);
 				return (
 					<Container>
 						<Header title={name} subTitle="Visits" />
-						<PostList posts={posts} currentPath={location.pathname} />
+						<div style={{ display: 'flex' }}>
+							<SpotList
+								spots={spots.edges}
+								// setActiveSpotId={setActiveSpotId}
+							/>
+							<PostList posts={posts} currentPath={location.pathname} />
+							{/* <PostList posts={posts} currentPath={pathContext.currentPath} /> */}
+						</div>
 					</Container>
 				);
 			}}

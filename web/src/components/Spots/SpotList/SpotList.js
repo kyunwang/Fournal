@@ -4,6 +4,46 @@ import PropTypes from 'prop-types';
 import ListCard from '../ListCard/ListCard';
 import { replaceAllNonCharacters } from '../../../utils/utils';
 import InternalLink from '../../general/InternalLink';
+import { Link } from 'gatsby';
+import { graphql } from 'gatsby';
+
+export const query = graphql`
+	fragment FoodSpotInformation on SanityFoodSpot {
+		id
+		name
+		url
+		description
+		location {
+			city {
+				name
+			}
+		}
+	}
+
+	fragment FoodSpotLocation on SanityFoodSpot {
+		location {
+			city {
+				name
+			}
+			country: city {
+				country {
+					name
+				}
+			}
+			coordinates {
+				lat
+				lng
+			}
+		}
+	}
+
+	fragment FoodSpotPost on SanityFoodSpot {
+		posts: post {
+			...PostInformation
+			# ...PostInformationPicture
+		}
+	}
+`;
 
 const SpotList = ({ spots, setActiveSpotId, windowLocation }) => {
 	return (
@@ -15,18 +55,13 @@ const SpotList = ({ spots, setActiveSpotId, windowLocation }) => {
 					const slug = replaceAllNonCharacters(name, '-');
 
 					return (
-						<InternalLink
-							newPath={`/foodspot/${slug}`}
-							newTitle={`Fournal - ${name}`}
-							key={id}
-							onClick={() => setActiveSpotId(id)}
-						>
+						<Link key={id} to={`/foodspot/${slug}`}>
 							<ListCard
 								info={location.city.name}
 								title={name}
 								description={description}
 							/>
-						</InternalLink>
+						</Link>
 					);
 				})}
 		</ul>
