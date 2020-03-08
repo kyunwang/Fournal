@@ -44,20 +44,24 @@ const FoodSpotPage = props => {
 		posts,
 	} = foodSpot;
 
+	const { currentPath } = pathContext;
+
 	return (
 		<OnePageContextConsumer>
 			{data => {
-				console.log('spots', data, location);
 				return (
 					<Container>
 						<Header title={name} subTitle="Visits" />
 						<div style={{ display: 'flex' }}>
-							<SpotList
-								spots={spots.edges}
-								// setActiveSpotId={setActiveSpotId}
-							/>
-							<PostList posts={posts} currentPath={location.pathname} />
-							{/* <PostList posts={posts} currentPath={pathContext.currentPath} /> */}
+							<div style={{ padding: '1.2rem' }}>
+								<SpotList spots={spots.edges} />
+							</div>
+							<div style={{ padding: '1.2rem' }}>
+								<PostList
+									posts={posts}
+									currentPath={pathContext.currentPath}
+								/>
+							</div>
 						</div>
 					</Container>
 				);

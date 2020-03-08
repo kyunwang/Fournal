@@ -36,7 +36,11 @@ export const query = graphql`
 	}
 `;
 
-const FoodPostPage = ({ data: { spots, foodSpot, foodPost } }) => {
+const FoodPostPage = ({
+	data: { spots, foodSpot, foodPost },
+	location,
+	pathContext,
+}) => {
 	const {
 		name,
 		location: {
@@ -47,19 +51,27 @@ const FoodPostPage = ({ data: { spots, foodSpot, foodPost } }) => {
 		posts,
 	} = foodSpot;
 
+	const filteredPosts = posts.filter(post => post.id !== foodPost.id);
+
+	const { spotPath, currentPath } = pathContext;
+
 	const spotSlug = replaceAllNonCharacters(name, '-');
 
 	return (
 		<Container hasBackButton backURL={`/foodspot/${spotSlug}`}>
 			<Header title={foodPost.title} subTitle={name} />
 			<div style={{ display: 'flex' }}>
-				<SpotList
-					spots={spots.edges}
-					// setActiveSpotId={setActiveSpotId}
-				/>
-				<PostList posts={posts} currentPath={'derp'} />
-				{/* <PostList posts={posts} currentPath={pathContext.currentPath} /> */}
-				<PostDetail post={foodPost} />
+				<div style={{ padding: '1.2rem' }}>
+					<SpotList spots={spots.edges} />
+				</div>
+				<div style={{ padding: '1.2rem' }}>
+					<PostDetail
+						post={foodPost}
+						posts={filteredPosts}
+						currentPath={currentPath}
+						spotPath={spotPath}
+					/>
+				</div>
 			</div>
 		</Container>
 	);
