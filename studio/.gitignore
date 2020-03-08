@@ -3,3 +3,4 @@
 /yarn.lock
 
 config/mapbox-input.json
+config/@sanity/google-maps-input.json
