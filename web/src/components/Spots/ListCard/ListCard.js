@@ -23,7 +23,26 @@ export const query = graphql`
 	}
 `;
 
-const ListCard = ({ info, title, description, pictures, isActive }) => {
+const ListCard = ({
+	description,
+	info,
+	isActive,
+	handleHoverImage,
+	handleClickImage,
+	pictures,
+	title,
+}) => {
+	const onEnterImage = () => {
+		handleHoverImage(true);
+	};
+
+	const onExitImage = () => {
+		handleHoverImage(false);
+	};
+
+	const onClickImage = index => {
+		handleClickImage(index);
+	};
 	return (
 		<li className={`${styles.card} ${isActive ? styles.isActive : ''}`}>
 			{info && <span>{info}</span>}
@@ -32,11 +51,19 @@ const ListCard = ({ info, title, description, pictures, isActive }) => {
 
 			{pictures.length > 0 && (
 				<footer className={styles.footerImageWrapper}>
-					{pictures.map(image => (
-						<NonStretchedImage
-							className={styles.footerImage}
-							fluid={image.asset.fluid}
-						/>
+					{pictures.map((image, index) => (
+						<button
+							key={image.asset.fluid.src}
+							onClick={() => onClickImage(index)}
+							onMouseEnter={onEnterImage}
+							onMouseLeave={onExitImage}
+						>
+							{/* <button> */}
+							<NonStretchedImage
+								className={styles.footerImage}
+								fluid={image.asset.fluid}
+							/>
+						</button>
 					))}
 				</footer>
 			)}
@@ -45,15 +72,19 @@ const ListCard = ({ info, title, description, pictures, isActive }) => {
 };
 
 ListCard.propTypes = {
-	info: PropTypes.string,
-	title: PropTypes.string.isRequired,
 	description: PropTypes.string,
+	info: PropTypes.string,
+	handleHoverImage: PropTypes.func,
+	handleClickImage: PropTypes.func,
 	pictures: PropTypes.array,
+	title: PropTypes.string.isRequired,
 };
 
 ListCard.defaultProps = {
-	info: '',
 	description: '',
+	info: '',
+	handleHoverImage: () => {},
+	handleClickImage: () => {},
 	pictures: [],
 };
 

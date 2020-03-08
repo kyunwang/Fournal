@@ -55,9 +55,9 @@ const SpotList = ({ spots, currentSpotId }) => {
 
 					const linkClasses = currentSpotId
 						? `${
-								id !== currentSpotId
-									? styles.notSelected
-									: styles.isSelected
+								id === currentSpotId
+									? styles.isSelected
+									: styles.notSelected
 						  }`
 						: '';
 

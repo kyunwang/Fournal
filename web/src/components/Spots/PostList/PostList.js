@@ -6,8 +6,14 @@ import { replaceAllNonCharacters } from '../../../utils/utils';
 import { Link } from 'gatsby';
 
 const PostList = props => {
-	const { posts, currentPath, currentFoodPostId, currentPost } = props;
-	console.log('postlist', props);
+	const {
+		posts,
+		currentPath,
+		currentFoodPostId,
+		currentPost,
+		handleHoverImage,
+		handleClickImage,
+	} = props;
 
 	return (
 		<ul className={styles.list}>
@@ -18,21 +24,22 @@ const PostList = props => {
 
 				const linkClasses = currentPost.id
 					? `${
-							id !== currentPost.id
-								? styles.notSelected
-								: styles.isSelected
+							id === currentPost.id
+								? styles.isSelected
+								: styles.notSelected
 					  }`
 					: '';
 
 				return id === currentPost.id ? (
-					<div className={linkClasses}>
+					<div className={linkClasses} key={currentPost.id}>
 						<ListCard
-							key={currentPost.id}
 							info={currentPost.visitDate}
 							title={currentPost.title}
 							description={currentPost.description}
 							isActive
 							pictures={currentPost.pictures}
+							handleHoverImage={handleHoverImage}
+							handleClickImage={handleClickImage}
 						/>
 					</div>
 				) : (

@@ -1,5 +1,5 @@
 import styles from './FoodPage.module.scss';
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Container from '../components/layout/Container';
@@ -45,6 +45,10 @@ const FoodPostPage = ({ data: { spots, foodSpot, foodPost }, pathContext }) => {
 
 	const { spotPath, foodPostId, foodSpotId } = pathContext;
 
+	// TODO: Possibly need context depending on what I want to do
+	const [activeImageIndex, setActiveImageIndex] = useState(null);
+	const [isHoveringImage, setIsHoveringImage] = useState(false);
+
 	return (
 		<Container title={foodPost.title} subTitle={name}>
 			<div className={`${styles.container}`}>
@@ -55,7 +59,11 @@ const FoodPostPage = ({ data: { spots, foodSpot, foodPost }, pathContext }) => {
 				<div className={styles.postsWrapper}>
 					{foodPost.pictures.length > 0 && (
 						<div className={`${styles.listWrapper} ${styles.highlight}`}>
-							<PostHighlight pictures={foodPost.pictures} />
+							<PostHighlight
+								isHoveringImage={isHoveringImage}
+								activeImageIndex={activeImageIndex}
+								pictures={foodPost.pictures}
+							/>
 						</div>
 					)}
 					<div className={styles.listWrapper}>
@@ -64,6 +72,8 @@ const FoodPostPage = ({ data: { spots, foodSpot, foodPost }, pathContext }) => {
 							currentPath={spotPath}
 							currentFoodPostId={foodPostId}
 							currentPost={foodPost}
+							handleHoverImage={setIsHoveringImage}
+							handleClickImage={setActiveImageIndex}
 						/>
 					</div>
 				</div>
