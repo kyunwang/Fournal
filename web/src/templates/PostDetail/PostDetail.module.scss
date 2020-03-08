@@ -11,9 +11,6 @@
 	border-radius: 50%;
 }
 
-.highlightImageWrapper {
-}
-
 .footerImageWrapper {
 	display: flex;
 }
@@ -56,10 +53,6 @@
 }
 
 @media all and (min-width: 30rem) {
-	.wrapper {
-		// width: 20rem;
-	}
-
 	.highlightImageWrapper {
 		position: absolute;
 		left: calc(100% + 2.4rem);
@@ -67,9 +60,10 @@
 
 	.highlightImage {
 		min-width: 20rem;
-		width: calc(20rem + 0vw);
-		height: calc(20rem + 0vw);
+		width: 20rem;
+		height: 20rem;
 		padding-bottom: 30%; // To be changed
+		padding-right: 2.4rem;
 	}
 
 	.card {
@@ -77,14 +71,14 @@
 	}
 }
 
-@media all and (min-width: 72rem) {
+@media all and (min-width: 76rem) {
 	.highlightImageWrapper {
 		// position: absolute;
 		// left: 120%;
 	}
 
 	.highlightImage {
-		// height: 32rem;
-		// width: 32rem;
+		height: 32rem;
+		width: 32rem;
 	}
 }

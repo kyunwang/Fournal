@@ -29,9 +29,7 @@ export const createPages = async ({ actions, graphql }) => {
 		const spotPath = `foodspot/${spotSlug}`;
 		actions.createPage({
 			path: spotPath,
-			component: path.resolve(
-				`./src/templates/FoodSpotPage/FoodSpotPage.js`
-			),
+			component: path.resolve(`./src/templates/FoodSpotPage.js`),
 			context: {
 				currentPath: spotPath,
 				foodSpotId: id,
@@ -44,9 +42,7 @@ export const createPages = async ({ actions, graphql }) => {
 
 			actions.createPage({
 				path: postPath,
-				component: path.resolve(
-					`./src/templates/FoodPostPage/FoodPostPage.js`
-				),
+				component: path.resolve(`./src/templates/FoodPostPage.js`),
 				context: {
 					spotPath,
 					currentPath: postPath,

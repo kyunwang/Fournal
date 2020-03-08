@@ -1,5 +1,3 @@
-import styles from './index.module.scss'; // Remove later on (header to container)
-
 import React, { useState } from 'react';
 import Container from '../components/layout/Container';
 
@@ -49,7 +47,7 @@ const HomePage = props => {
 							title="Fournal"
 							subTitle="Inconsistent food journaling"
 						/>
-						<div className={styles.listWrapper}>
+						<div style={{ padding: '1.2rem' }}>
 							<SpotList
 								spots={spots.edges}
 								setActiveSpotId={setActiveSpotId}

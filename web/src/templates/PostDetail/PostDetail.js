@@ -1,9 +1,9 @@
 import styles from './PostDetail.module.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
-import NonStretchedImage from '../../../components/general/NonStretchedImage';
-import Header from '../../../components/layout/Header/Header';
-import PostList from '../../../components/Spots/PostList/PostList';
+import NonStretchedImage from '../../components/general/NonStretchedImage';
+import Header from '../../components/layout/Header/Header';
+import PostList from '../../components/Spots/PostList/PostList';
 
 export const query = graphql`
 	fragment PostInformation on SanityFoodPost {
