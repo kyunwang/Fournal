@@ -3,28 +3,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ListCard from '../ListCard/ListCard';
 import { replaceAllNonCharacters } from '../../../utils/utils';
-import InternalLink from '../../general/InternalLink';
 import { Link } from 'gatsby';
-import PostDetail from '../PostDetail/PostDetail';
 
 const PostList = props => {
 	const { posts, currentPath, currentFoodPostId, currentPost } = props;
 
-	const filteredPosts = posts.filter(
-		post => post.id !== (currentPost && currentPost.id)
-	);
-
 	return (
 		<ul className={styles.list}>
 			{posts.map(post => {
-				const { title, id, visitDate, description } = post;
+				const { title, id, visitDate, description, pictures, price } = post;
+
 				const slug = replaceAllNonCharacters(title, '-');
 
 				return id === currentFoodPostId ? (
-					<PostDetail
-						post={currentPost}
-						posts={filteredPosts}
-						currentPath={currentPath}
+					<ListCard
+						info={currentPost.visitDate}
+						title={currentPost.title}
+						description={currentPost.description}
+						isActive
+						pictures={currentPost.pictures}
 					/>
 				) : (
 					<Link

@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ListCard from '../ListCard/ListCard';
 import { replaceAllNonCharacters } from '../../../utils/utils';
-import InternalLink from '../../general/InternalLink';
 import { Link } from 'gatsby';
 import { graphql } from 'gatsby';
 

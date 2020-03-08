@@ -3,6 +3,11 @@
 	display: flex;
 }
 
+.postsWrapper {
+	display: flex;
+	flex-direction: column;
+}
+
 .listWrapper {
 	padding: 1.2rem;
 	scroll-snap-align: start;
@@ -12,10 +17,9 @@
 	display: none;
 }
 
-.isSpotPage {
-	.postList {
-		// padding-right: 14.6rem;
-	}
+.highlight {
+	flex: 1;
+	max-width: 36rem;
 }
 
 @media all and (min-width: 30rem) {
@@ -26,6 +30,10 @@
 		overflow-x: scroll;
 		scroll-snap-type: x mandatory;
 		scroll-padding-left: 2.4rem;
+	}
+
+	.postsWrapper {
+		flex-direction: row-reverse;
 	}
 
 	.spotList {

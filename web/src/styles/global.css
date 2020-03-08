@@ -2,29 +2,22 @@
 @import './vars.css';
 
 body {
-  font-family: 'gangster grotesk', 'work sans', sans-serif;
+	font-family: 'gangster grotesk', 'work sans', sans-serif;
 }
 
 button {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 h2 {
-  font-size: 1.2rem;
+	font-size: 1.2rem;
 }
 
 p {
 	font-weight: 300;
-}
-
-
-@media all and (min-width: 30rem) {
-	h2 {
-		/* font-size: 1.2rem; */
-	}
 }

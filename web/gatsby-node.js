@@ -33,12 +33,13 @@ export const createPages = async ({ actions, graphql }) => {
 			context: {
 				currentPath: spotPath,
 				foodSpotId: id,
+				spotSlug,
 			},
 		});
 
 		posts.forEach(post => {
-			const visitSlug = replaceAllNonCharacters(post.title, '-');
-			const postPath = `foodspot/${spotSlug}/${visitSlug}`;
+			const postSlug = replaceAllNonCharacters(post.title, '-');
+			const postPath = `foodspot/${spotSlug}/${postSlug}`;
 
 			actions.createPage({
 				path: postPath,
@@ -48,6 +49,8 @@ export const createPages = async ({ actions, graphql }) => {
 					currentPath: postPath,
 					foodSpotId: id,
 					foodPostId: post.id,
+					spotSlug,
+					postSlug,
 				},
 			});
 		});

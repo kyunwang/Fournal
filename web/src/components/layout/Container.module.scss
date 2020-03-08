@@ -1,9 +1,9 @@
 .container {
-  display: block;
+	display: block;
 }
 
 @media all and (min-width: 30rem) {
-	.container { 
+	.container {
 		padding: 1.6rem 2.4rem;
 	}
 }

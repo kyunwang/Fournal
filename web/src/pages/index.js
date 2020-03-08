@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
-import Container from '../components/layout/Container';
-
+import styles from '../templates/FoodPage.module.scss';
+import React from 'react';
 import { graphql } from 'gatsby';
+import Container from '../components/layout/Container';
 import SpotList from '../components/Spots/SpotList/SpotList';
-import Header from '../components/layout/Header/Header';
-import { OnePageContextConsumer } from '../context/OnePageContext';
-import PostList from '../components/Spots/PostList/PostList';
 
 export const query = graphql`
 	query indexPageQuery {
@@ -27,36 +24,12 @@ const HomePage = props => {
 		error,
 	} = props;
 
-	const [activePosts, setActivePosts] = useState([]);
-
-	// grab url - in effect
-
 	return (
-		<OnePageContextConsumer>
-			{data => {
-				const {
-					setActiveSpotId,
-					activePostId,
-					activeSpotId,
-					setActivePostId,
-				} = data;
-
-				return (
-					<Container>
-						<Header
-							title="Fournal"
-							subTitle="Inconsistent food journaling"
-						/>
-						<div style={{ padding: '1.2rem' }}>
-							<SpotList
-								spots={spots.edges}
-								setActiveSpotId={setActiveSpotId}
-							/>
-						</div>
-					</Container>
-				);
-			}}
-		</OnePageContextConsumer>
+		<Container title="Fournal" subTitle="Inconsistent food journaling">
+			<div className={styles.listWrapper}>
+				<SpotList spots={spots.edges} />
+			</div>
+		</Container>
 	);
 };
 
