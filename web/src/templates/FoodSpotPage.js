@@ -38,19 +38,18 @@ const FoodSpotPage = ({ data: { spots, foodSpot }, pathContext }) => {
 		posts,
 	} = foodSpot;
 
-	const { foodPostId, spotPath } = pathContext;
+	const { foodSpotId, spotPath } = pathContext;
 
 	return (
 		<Container title={name} subTitle="Visits">
 			<div className={`${styles.container}`}>
 				<div className={`${styles.listWrapper} ${styles.spotList}`}>
-					<SpotList spots={spots.edges} />
+					<SpotList spots={spots.edges} currentSpotId={foodSpotId} />
 				</div>
 				<div className={`${styles.listWrapper} ${styles.postList}`}>
 					<PostList
 						posts={posts}
 						currentPath={pathContext.currentPath}
-						currentFoodPostId={foodPostId}
 						spotPath={spotPath}
 					/>
 				</div>

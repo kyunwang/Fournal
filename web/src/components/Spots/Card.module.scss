@@ -28,7 +28,8 @@
 		margin-bottom: 1.2rem;
 		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.12);
 
-		h2 p {
+		h2,
+		p {
 			-webkit-line-clamp: none; // Disable
 		}
 	}

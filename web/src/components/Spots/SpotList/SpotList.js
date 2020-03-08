@@ -44,7 +44,7 @@ export const query = graphql`
 	}
 `;
 
-const SpotList = ({ spots, setActiveSpotId, windowLocation }) => {
+const SpotList = ({ spots, currentSpotId }) => {
 	return (
 		<ul className={styles.list}>
 			{spots
@@ -53,8 +53,20 @@ const SpotList = ({ spots, setActiveSpotId, windowLocation }) => {
 					const { name, description, location, id } = spot.node;
 					const slug = replaceAllNonCharacters(name, '-');
 
+					const linkClasses = currentSpotId
+						? `${
+								id !== currentSpotId
+									? styles.notSelected
+									: styles.isSelected
+						  }`
+						: '';
+
 					return (
-						<Link key={id} to={`/foodspot/${slug}`}>
+						<Link
+							key={id}
+							to={`/foodspot/${slug}`}
+							className={linkClasses}
+						>
 							<ListCard
 								info={location.city.name}
 								title={name}
@@ -67,7 +79,12 @@ const SpotList = ({ spots, setActiveSpotId, windowLocation }) => {
 	);
 };
 
-SpotList.propTypes = {};
-SpotList.defaultProps = {};
+SpotList.propTypes = {
+	// spots: PropTypes.string.isRequired,
+	currentSpotId: PropTypes.string,
+};
+SpotList.defaultProps = {
+	currentSpotId: '',
+};
 
 export default SpotList;

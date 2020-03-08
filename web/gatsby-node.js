@@ -33,6 +33,7 @@ export const createPages = async ({ actions, graphql }) => {
 			context: {
 				currentPath: spotPath,
 				foodSpotId: id,
+				spotPath,
 				spotSlug,
 			},
 		});
@@ -45,12 +46,12 @@ export const createPages = async ({ actions, graphql }) => {
 				path: postPath,
 				component: path.resolve(`./src/templates/FoodPostPage.js`),
 				context: {
-					spotPath,
 					currentPath: postPath,
-					foodSpotId: id,
 					foodPostId: post.id,
-					spotSlug,
+					foodSpotId: id,
 					postSlug,
+					spotPath,
+					spotSlug,
 				},
 			});
 		});
