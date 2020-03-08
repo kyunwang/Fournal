@@ -48,6 +48,7 @@ export const createPages = async ({ actions, graphql }) => {
 					`./src/templates/FoodPostPage/FoodPostPage.js`
 				),
 				context: {
+					spotPath,
 					currentPath: postPath,
 					foodSpotId: id,
 					foodPostId: post.id,
