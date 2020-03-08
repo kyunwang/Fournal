@@ -1,9 +1,9 @@
 import styles from './PostDetail.module.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
-import NonStretchedImage from '../../components/general/NonStretchedImage';
-import Header from '../../components/layout/Header/Header';
-import PostList from '../../components/Spots/PostList/PostList';
+import NonStretchedImage from '../../general/NonStretchedImage';
+import Header from '../../layout/Header/Header';
+import PostList from '../PostList/PostList';
 
 export const query = graphql`
 	fragment PostInformation on SanityFoodPost {
@@ -27,9 +27,6 @@ export const query = graphql`
 
 const PostDetail = ({
 	post: { pictures, price, title, visitDate, description },
-	posts,
-	currentPath,
-	spotPath,
 }) => {
 	return (
 		<>
@@ -60,7 +57,6 @@ const PostDetail = ({
 						{/* button to expand and show ordered items? */}
 					</section>
 				</div>
-				<PostList posts={posts} currentPath={spotPath} />
 			</div>
 		</>
 	);

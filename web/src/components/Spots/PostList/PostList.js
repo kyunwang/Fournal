@@ -5,9 +5,14 @@ import ListCard from '../ListCard/ListCard';
 import { replaceAllNonCharacters } from '../../../utils/utils';
 import InternalLink from '../../general/InternalLink';
 import { Link } from 'gatsby';
+import PostDetail from '../PostDetail/PostDetail';
 
-const PostList = ({ posts, currentPath, setActiveSpotId }) => {
-	// if posts.length === 1 => open
+const PostList = props => {
+	const { posts, currentPath, currentFoodPostId, currentPost } = props;
+
+	const filteredPosts = posts.filter(
+		post => post.id !== (currentPost && currentPost.id)
+	);
 
 	return (
 		<ul className={styles.list}>
@@ -15,7 +20,13 @@ const PostList = ({ posts, currentPath, setActiveSpotId }) => {
 				const { title, id, visitDate, description } = post;
 				const slug = replaceAllNonCharacters(title, '-');
 
-				return (
+				return id === currentFoodPostId ? (
+					<PostDetail
+						post={currentPost}
+						posts={filteredPosts}
+						currentPath={currentPath}
+					/>
+				) : (
 					<Link
 						key={id}
 						to={`${currentPath}/${slug}`}

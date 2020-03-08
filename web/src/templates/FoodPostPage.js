@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Container from '../components/layout/Container';
 import PostList from '../components/Spots/PostList/PostList';
-import PostDetail from './PostDetail/PostDetail';
+import PostDetail from '../components/Spots/PostDetail/PostDetail';
 import Header from '../components/layout/Header/Header';
 import { replaceAllNonCharacters } from '../utils/utils';
 import SpotList from '../components/Spots/SpotList/SpotList';
@@ -51,9 +51,7 @@ const FoodPostPage = ({
 		posts,
 	} = foodSpot;
 
-	const filteredPosts = posts.filter(post => post.id !== foodPost.id);
-
-	const { spotPath, currentPath } = pathContext;
+	const { spotPath, foodPostId } = pathContext;
 
 	const spotSlug = replaceAllNonCharacters(name, '-');
 
@@ -65,11 +63,11 @@ const FoodPostPage = ({
 					<SpotList spots={spots.edges} />
 				</div>
 				<div className={`${styles.listWrapper}`}>
-					<PostDetail
-						post={foodPost}
-						posts={filteredPosts}
-						currentPath={currentPath}
-						spotPath={spotPath}
+					<PostList
+						posts={posts}
+						currentPath={spotPath}
+						currentFoodPostId={foodPostId}
+						currentPost={foodPost}
 					/>
 				</div>
 			</div>

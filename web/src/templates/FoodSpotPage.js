@@ -45,7 +45,7 @@ const FoodSpotPage = props => {
 		posts,
 	} = foodSpot;
 
-	const { currentPath } = pathContext;
+	const { currentPath, foodPostId, spotPath } = pathContext;
 
 	return (
 		<OnePageContextConsumer>
@@ -65,6 +65,8 @@ const FoodSpotPage = props => {
 								<PostList
 									posts={posts}
 									currentPath={pathContext.currentPath}
+									currentFoodPostId={foodPostId}
+									spotPath={spotPath}
 								/>
 							</div>
 						</div>
