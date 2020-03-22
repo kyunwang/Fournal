@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import qs from 'query-string';
 import Container from '../components/layout/Container';
-import Header from '../components/layout/Header/Header';
 import SpotList from '../components/Spots/SpotList/SpotList';
 import PostList from '../components/Spots/PostList/PostList';
+import PostHighlight from '../components/Spots/PostHighlight/PostHighlight';
 
 export const query = graphql`
 	query foodSpotPageQuery($foodSpotId: String!) {
@@ -45,12 +45,11 @@ const FoodSpotPage = ({ data: { spots, foodSpot }, pathContext, location }) => {
 
 	useEffect(() => {
 		const { post: postSlug } = qs.parse(location.search);
-		// const postSlug = qs.parse(location.hash)
-		// console.log('upadete', postSlug, location);
 
 		if (postSlug && posts.length) {
-			// const post = posts.length &&
-			const foundPost = posts.find(({ slug: { current } }) => current === postSlug);
+			const foundPost = posts.find(
+				({ slug: { current } }) => current === postSlug
+			);
 
 			if (foundPost) {
 				setCurrentPost(foundPost);
@@ -69,17 +68,29 @@ const FoodSpotPage = ({ data: { spots, foodSpot }, pathContext, location }) => {
 				<div className={`${styles.listWrapper} ${styles.spotList}`}>
 					<SpotList spots={spots.edges} currentSpotId={foodSpotId} />
 				</div>
-				<div className={`${styles.listWrapper} ${styles.postList}`}>
-					<PostList
-						activeImageIndex={activeImageIndex}
-						currentPost={currentPost}
-						handleHoverImage={setIsHoveringImage}
-						handleClickImage={setActiveImageIndex}
 
-						posts={posts}
-						currentPath={spotPath}
-						spotPath={spotPath}
-					/>
+				<div className={styles.postsWrapper}>
+					{currentPost && currentPost.pictures.length > 0 && (
+						<div className={`${styles.listWrapper} ${styles.highlight}`}>
+							<PostHighlight
+								isHoveringImage={isHoveringImage}
+								activeImageIndex={activeImageIndex}
+								pictures={currentPost.pictures}
+								coordinates={coordinates}
+							/>
+						</div>
+					)}
+					<div className={styles.listWrapper}>
+						<PostList
+							activeImageIndex={activeImageIndex}
+							currentPost={currentPost}
+							handleHoverImage={setIsHoveringImage}
+							handleClickImage={setActiveImageIndex}
+							posts={posts}
+							currentPath={spotPath}
+							spotPath={spotPath}
+						/>
+					</div>
 				</div>
 			</div>
 		</Container>

@@ -52,8 +52,8 @@ const PostList = props => {
 						key={id}
 						// to={`${currentPath}/${slug}`}
 						// state={{ fromList: true }}
-						newPath={`${currentPath}/${slug}`}
-						newInternalPath={`?post=${slug}`}
+						newPath={`/${currentPath}/${slug}`}
+						newInternalPath={`/${currentPath}?post=${slug}`}
 					>
 						<ListCard
 							info={visitDate}
