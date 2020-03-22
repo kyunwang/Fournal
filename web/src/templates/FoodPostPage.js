@@ -63,11 +63,13 @@ const FoodPostPage = ({ data: { spots, foodSpot, foodPost }, pathContext }) => {
 								isHoveringImage={isHoveringImage}
 								activeImageIndex={activeImageIndex}
 								pictures={foodPost.pictures}
-							/>
+								coordinates={coordinates}
+								/>
 						</div>
 					)}
 					<div className={styles.listWrapper}>
 						<PostList
+							activeImageIndex={activeImageIndex}
 							posts={posts}
 							currentPath={spotPath}
 							currentFoodPostId={foodPostId}

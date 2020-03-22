@@ -24,6 +24,7 @@ export const query = graphql`
 `;
 
 const ListCard = ({
+	activeImageIndex,
 	description,
 	info,
 	isActive,
@@ -41,8 +42,13 @@ const ListCard = ({
 	};
 
 	const onClickImage = index => {
-		handleClickImage(index);
+		if (activeImageIndex === index) {
+			handleClickImage(null);
+		} else {
+			handleClickImage(index);
+		}
 	};
+
 	return (
 		<li className={`${styles.card} ${isActive ? styles.isActive : ''}`}>
 			{info && <span>{info}</span>}
@@ -81,6 +87,7 @@ ListCard.propTypes = {
 };
 
 ListCard.defaultProps = {
+	activeImageIndex: null,
 	description: '',
 	info: '',
 	handleHoverImage: () => {},

@@ -3,7 +3,7 @@
 	flex-direction: column;
 	width: 100%;
 	margin: 0;
-	padding: 0;
+	padding: 1.2rem;
 
 	a {
 		margin-bottom: 1.2rem;
@@ -32,5 +32,7 @@
 @media all and (min-width: 30rem) {
 	.list {
 		width: min-content;
+		height: 100%;
+		overflow-y: scroll;
 	}
 }

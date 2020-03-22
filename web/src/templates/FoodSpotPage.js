@@ -49,7 +49,7 @@ const FoodSpotPage = ({ data: { spots, foodSpot }, pathContext }) => {
 				<div className={`${styles.listWrapper} ${styles.postList}`}>
 					<PostList
 						posts={posts}
-						currentPath={pathContext.currentPath}
+						currentPath={spotPath}
 						spotPath={spotPath}
 					/>
 				</div>

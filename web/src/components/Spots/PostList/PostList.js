@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 import ListCard from '../ListCard/ListCard';
 import { replaceAllNonCharacters } from '../../../utils/utils';
 import { Link } from 'gatsby';
+import InternalLink from '../../general/InternalLink';
 
 const PostList = props => {
 	const {
+		activeImageIndex,
 		posts,
 		currentPath,
 		currentFoodPostId,
@@ -33,6 +35,7 @@ const PostList = props => {
 				return id === currentPost.id ? (
 					<div className={linkClasses} key={currentPost.id}>
 						<ListCard
+							activeImageIndex={activeImageIndex}
 							info={currentPost.visitDate}
 							title={currentPost.title}
 							description={currentPost.description}
@@ -48,6 +51,10 @@ const PostList = props => {
 						key={id}
 						to={`${currentPath}/${slug}`}
 						// state={{ fromList: true }}
+						// newPath={`${currentPath}/${slug}`}
+						// onClick={() => {
+						// 	console.log('test');
+						// }}
 					>
 						<ListCard
 							info={visitDate}
