@@ -5,7 +5,6 @@
  */
 
 import * as path from 'path';
-import { replaceAllNonCharacters } from './src/utils/utils';
 
 export const createPages = async ({ actions, graphql }) => {
 	const { data } = await graphql(`
@@ -14,17 +13,23 @@ export const createPages = async ({ actions, graphql }) => {
 				nodes {
 					id
 					name
+					slug {
+						current
+					}
 					posts: post {
 						id
 						title
+						slug {
+							current
+						}
 					}
 				}
 			}
 		}
 	`);
 
-	data.allSanityFoodSpot.nodes.forEach(({ id, name, posts }) => {
-		const spotSlug = replaceAllNonCharacters(name, '-');
+	data.allSanityFoodSpot.nodes.forEach(({ id, name, posts, slug }) => {
+		const spotSlug = slug.current;
 
 		const spotPath = `foodspot/${spotSlug}`;
 		actions.createPage({
@@ -39,7 +44,7 @@ export const createPages = async ({ actions, graphql }) => {
 		});
 
 		posts.forEach(post => {
-			const postSlug = replaceAllNonCharacters(post.title, '-');
+			const postSlug = post.slug.current;
 			const postPath = `foodspot/${spotSlug}/${postSlug}`;
 
 			actions.createPage({
