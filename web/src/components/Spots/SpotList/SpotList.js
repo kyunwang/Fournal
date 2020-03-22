@@ -2,7 +2,6 @@ import styles from '../List.module.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 import ListCard from '../ListCard/ListCard';
-import { replaceAllNonCharacters } from '../../../utils/utils';
 import { Link } from 'gatsby';
 import { graphql } from 'gatsby';
 
@@ -16,6 +15,9 @@ export const query = graphql`
 			city {
 				name
 			}
+		}
+		slug {
+			current
 		}
 	}
 
@@ -50,8 +52,13 @@ const SpotList = ({ spots, currentSpotId }) => {
 			{spots
 				.filter(spot => spot.node.posts.length > 0)
 				.map(spot => {
-					const { name, description, location, id } = spot.node;
-					const slug = replaceAllNonCharacters(name, '-');
+					const {
+						name,
+						description,
+						location,
+						id,
+						slug: { current: slug },
+					} = spot.node;
 
 					const linkClasses = currentSpotId
 						? `${

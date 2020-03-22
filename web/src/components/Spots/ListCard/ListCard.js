@@ -10,6 +10,9 @@ export const query = graphql`
 		title
 		visitDate(formatString: "MM-YYYY")
 		description
+		slug {
+			current
+		}
 	}
 
 	fragment PostInformationPicture on SanityFoodPost {

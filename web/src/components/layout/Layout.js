@@ -1,6 +1,6 @@
 import '../../styles/global.css';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
 // import favicon
@@ -10,6 +10,11 @@ import { OnePageContextProvider } from '../../context/OnePageContext';
 const Layout = ({ children }) => {
 	const [activeSpotId, setActiveSpotId] = useState(null);
 	const [activePostId, setActivePostId] = useState(null);
+
+	// useEffect(( ) => {
+	// 	console.log('upadete');
+		
+	// }, [])
 
 	return (
 		<OnePageContextProvider

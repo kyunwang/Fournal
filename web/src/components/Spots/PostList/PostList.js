@@ -2,8 +2,6 @@ import styles from '../List.module.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 import ListCard from '../ListCard/ListCard';
-import { replaceAllNonCharacters } from '../../../utils/utils';
-import { Link } from 'gatsby';
 import InternalLink from '../../general/InternalLink';
 
 const PostList = props => {
@@ -11,7 +9,6 @@ const PostList = props => {
 		activeImageIndex,
 		posts,
 		currentPath,
-		currentFoodPostId,
 		currentPost,
 		handleHoverImage,
 		handleClickImage,
@@ -20,9 +17,13 @@ const PostList = props => {
 	return (
 		<ul className={styles.list}>
 			{posts.map(post => {
-				const { title, id, visitDate, description } = post;
-
-				const slug = replaceAllNonCharacters(title, '-');
+				const {
+					title,
+					id,
+					visitDate,
+					description,
+					slug: { current: slug },
+				} = post;
 
 				const linkClasses = currentPost.id
 					? `${
@@ -46,22 +47,20 @@ const PostList = props => {
 						/>
 					</div>
 				) : (
-					<Link
-						className={linkClasses}
+					<InternalLink
+						// className={linkClasses}
 						key={id}
-						to={`${currentPath}/${slug}`}
+						// to={`${currentPath}/${slug}`}
 						// state={{ fromList: true }}
-						// newPath={`${currentPath}/${slug}`}
-						// onClick={() => {
-						// 	console.log('test');
-						// }}
+						newPath={`${currentPath}/${slug}`}
+						newInternalPath={`?post=${slug}`}
 					>
 						<ListCard
 							info={visitDate}
 							title={title}
 							description={description}
 						/>
-					</Link>
+					</InternalLink>
 				);
 			})}
 		</ul>
