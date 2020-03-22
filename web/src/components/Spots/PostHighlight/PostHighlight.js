@@ -36,18 +36,28 @@ const PostHighlight = ({
 	// useEffect(() => {});
 
 	return (
-		<div className={styles.highlightImage} style={{
-			position: 'relative',
-			
-		}}>
-			{activeImageIndex !== null && (
-				<NonStretchedImage
-					className={styles.highlightImage}
-					fluid={pictures[activeImageIndex].asset.fluid}
-					// fluid={pictures[activeImageIndex].asset.fluid}
-				/>
-			)}
-			<div ref={mapRef} className={styles.highlightMap}></div>
+		<div
+			className={styles.highlightImage}
+			style={{
+				position: 'relative',
+			}}
+		>
+			<div
+				className={{}}
+				style={{
+					position: 'absolute',
+					zIndex: 99,
+				}}
+			>
+				{pictures.length && activeImageIndex !== null && (
+					<NonStretchedImage
+						className={styles.highlightImage}
+						fluid={pictures[activeImageIndex].asset.fluid}
+						// fluid={pictures[activeImageIndex].asset.fluid}
+					/>
+				)}
+			</div>
+			<div ref={mapRef} className={styles.highlightMap} />
 		</div>
 	);
 };
@@ -63,7 +73,7 @@ PostHighlight.propTypes = {
 };
 
 PostHighlight.defaultProps = {
-	// pictures: '',
+	pictures: [],
 	activeImageIndex: 0,
 };
 

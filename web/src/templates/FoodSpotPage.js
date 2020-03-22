@@ -35,11 +35,7 @@ export const query = graphql`
 const FoodSpotPage = ({ data: { spots, foodSpot }, pathContext, location }) => {
 	const {
 		name,
-		location: {
-			city,
-			country: { country },
-			coordinates,
-		},
+		location: { coordinates },
 		posts,
 	} = foodSpot;
 
@@ -70,16 +66,14 @@ const FoodSpotPage = ({ data: { spots, foodSpot }, pathContext, location }) => {
 				</div>
 
 				<div className={styles.postsWrapper}>
-					{currentPost && currentPost.pictures.length > 0 && (
-						<div className={`${styles.listWrapper} ${styles.highlight}`}>
-							<PostHighlight
-								isHoveringImage={isHoveringImage}
-								activeImageIndex={activeImageIndex}
-								pictures={currentPost.pictures}
-								coordinates={coordinates}
-							/>
-						</div>
-					)}
+					<div className={`${styles.listWrapper} ${styles.highlight}`}>
+						<PostHighlight
+							isHoveringImage={isHoveringImage}
+							activeImageIndex={activeImageIndex}
+							pictures={currentPost && currentPost.pictures}
+							coordinates={coordinates}
+						/>
+					</div>
 					<div className={styles.listWrapper}>
 						<PostList
 							activeImageIndex={activeImageIndex}
