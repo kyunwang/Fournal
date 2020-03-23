@@ -9,3 +9,16 @@ Went with a less than optimal routing to start with - been pondering too much ðŸ
 - [] Refactor ðŸ˜‰ optimize
 - [] Possibly break off querys (fragments) to external files
 - [] "Smarter" querries?
+  
+
+
+# Tech used
+- Front end: [gatsby]
+- Maps: [leaflet] - [tangram] - [nextzen]
+
+<!-- FE -->
+[gatsby]: https://www.gatsbyjs.org/
+<!-- Maps -->
+[nextzen]: https://www.nextzen.org/
+[leaflet]: https://leafletjs.com/
+[tangram]: https://github.com/tangrams/tangram

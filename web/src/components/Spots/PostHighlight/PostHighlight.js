@@ -3,8 +3,6 @@ import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import NonStretchedImage from '../../general/NonStretchedImage';
 import mapScene from './mapScene';
-// import icons from './map/refill-icons.yaml';
-// import color from './map/color-blue.yaml';
 
 const PostHighlight = ({
 	coordinates,
@@ -12,8 +10,6 @@ const PostHighlight = ({
 	isHoveringImage,
 	activeImageIndex,
 }) => {
-	console.log(activeImageIndex, coordinates);
-	// Show map
 	const mapRef = useRef();
 
 	useEffect(() => {
@@ -28,37 +24,31 @@ const PostHighlight = ({
 		});
 
 		layer.addTo(map);
-
-		// map.setView([40.70531887544228, -74.00976419448853], 15);
 		map.setView([coordinates.lat, coordinates.lng], 15);
 	}, []);
 
 	// useEffect(() => {});
 
 	return (
-		<div
+		<aside
 			className={styles.highlightImage}
 			style={{
 				position: 'relative',
 			}}
 		>
+			<div ref={mapRef} className={styles.highlightMap} />
 			<div
-				className={{}}
-				style={{
-					position: 'absolute',
-					zIndex: 99,
-				}}
+				className={styles.imageWrapper}
+				style={{ pointerEvents: activeImageIndex !== null ? 'all' : 'none' }}
 			>
 				{pictures.length && activeImageIndex !== null && (
 					<NonStretchedImage
 						className={styles.highlightImage}
 						fluid={pictures[activeImageIndex].asset.fluid}
-						// fluid={pictures[activeImageIndex].asset.fluid}
 					/>
 				)}
 			</div>
-			<div ref={mapRef} className={styles.highlightMap} />
-		</div>
+		</aside>
 	);
 };
 
@@ -74,7 +64,7 @@ PostHighlight.propTypes = {
 
 PostHighlight.defaultProps = {
 	pictures: [],
-	activeImageIndex: 0,
+	activeImageIndex: null,
 };
 
 export default PostHighlight;
