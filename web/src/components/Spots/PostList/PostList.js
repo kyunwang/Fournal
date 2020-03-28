@@ -1,30 +1,81 @@
 import styles from '../List.module.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
 import ListCard from '../ListCard/ListCard';
-import { replaceAllNonCharacters } from '../../../utils/utils';
+import InternalLink from '../../general/InternalLink';
 
-const PostList = ({ posts, currentPath }) => {
-  // if posts.length === 1 => open
+const PostList = props => {
+	const {
+		activeImageIndex,
+		posts,
+		currentPath,
+		currentPost,
+		handleHoverImage,
+		handleClickImage,
+	} = props;
 
-  return (
-    <ul className={styles.list}>
-      {posts.map(post => {
-        const { title, id, visitDate, description } = post;
-        const slug = replaceAllNonCharacters(title, '-');
+	return (
+		<ul className={styles.list}>
+			{posts.map(post => {
+				const {
+					title,
+					id,
+					visitDate,
+					description,
+					slug: { current: slug },
+				} = post;
 
-        return (
-          <Link key={id} to={`${currentPath}/${slug}`} state={{ fromList: true }}>
-            <ListCard info={visitDate} title={title} description={description} />
-          </Link>
-        );
-      })}
-    </ul>
-  );
+				const linkClasses = currentPost.id
+					? `${
+							id === currentPost.id
+								? styles.isSelected
+								: styles.notSelected
+					  }`
+					: '';
+
+				return id === currentPost.id ? (
+					<div className={linkClasses} key={currentPost.id}>
+						<ListCard
+							activeImageIndex={activeImageIndex}
+							info={currentPost.visitDate}
+							title={currentPost.title}
+							description={currentPost.description}
+							isActive
+							pictures={currentPost.pictures}
+							handleHoverImage={handleHoverImage}
+							handleClickImage={handleClickImage}
+						/>
+					</div>
+				) : (
+					<InternalLink
+						className={linkClasses}
+						key={id}
+						// to={`${currentPath}/${slug}`}
+						// state={{ fromList: true }}
+						newPath={`/${currentPath}/${slug}`}
+						newInternalPath={`/${currentPath}?post=${slug}`}
+					>
+						<ListCard
+							info={visitDate}
+							title={title}
+							description={description}
+						/>
+					</InternalLink>
+				);
+			})}
+		</ul>
+	);
 };
 
-PostList.propTypes = {};
-PostList.defaultProps = {};
+PostList.propTypes = {
+	posts: PropTypes.arrayOf(PropTypes.object).isRequired,
+	currentPath: PropTypes.string.isRequired,
+	currentFoodPostId: PropTypes.string,
+	// currentPost: PropTypes.object,
+};
+PostList.defaultProps = {
+	currentFoodPostId: '',
+	currentPost: {},
+};
 
 export default PostList;

@@ -1,3 +1,5 @@
+import { getSlug } from '../../helpers';
+
 export default {
 	name: 'foodSpot',
 	title: 'Spot',
@@ -11,6 +13,12 @@ export default {
 			name: 'name',
 			title: 'Spot Name',
 			type: 'string',
+		},
+		{
+			name: 'slug',
+			title: 'Slug',
+			type: 'slug',
+			options: getSlug('name')
 		},
 		{
 			name: 'recommended',

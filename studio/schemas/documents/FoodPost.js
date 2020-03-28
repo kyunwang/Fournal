@@ -1,3 +1,5 @@
+import { getSlug } from '../../helpers';
+
 export default {
 	name: 'foodPost',
 	title: 'Food Post',
@@ -14,6 +16,12 @@ export default {
 			name: 'title',
 			title: 'Title',
 			type: 'string',
+		},
+		{
+			name: 'slug',
+			title: 'Slug',
+			type: 'slug',
+			options: getSlug('title')
 		},
 		{
 			name: 'visitDate',

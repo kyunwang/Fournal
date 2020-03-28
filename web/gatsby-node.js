@@ -1,54 +1,67 @@
 /**
-import { replaceAllNonCharacters } from './src/utils/utils';
  * Implement Gatsby's Node APIs in this file.
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
 import * as path from 'path';
-import { replaceAllNonCharacters } from './src/utils/utils';
 
 export const createPages = async ({ actions, graphql }) => {
 	const { data } = await graphql(`
-    query {
-      allSanityFoodSpot {
-        nodes {
-          id
+		query {
+			allSanityFoodSpot {
+				nodes {
+					id
 					name
+					slug {
+						current
+					}
 					posts: post {
 						id
 						title
+						slug {
+							current
+						}
 					}
-        }
-      }
-    }
-  `);
+				}
+			}
+		}
+	`);
 
-  data.allSanityFoodSpot.nodes.forEach(({ id, name, posts }) => {
-    const spotSlug = replaceAllNonCharacters(name, '-');
+	data.allSanityFoodSpot.nodes.forEach(({ id, name, posts, slug }) => {
+		const spotSlug = slug.current;
 
-    actions.createPage({
-      path: `foodspot/${spotSlug}`,
-      component: path.resolve(`./src/templates/FoodSpot/FoodSpot.js`),
-      context: {
-        foodSpotId: id,
-      },
-    });
+		const spotPath = `foodspot/${spotSlug}`;
+		actions.createPage({
+			path: spotPath,
+			component: path.resolve(`./src/templates/FoodSpotPage.js`),
+			context: {
+				currentPath: spotPath,
+				foodSpotId: id,
+				spotPath,
+				spotSlug,
+			},
+		});
 
-    posts.forEach(post => {
-      const visitSlug = replaceAllNonCharacters(post.title, '-');
+		posts.forEach(post => {
+			const postSlug = post.slug.current;
+			const postPath = `foodspot/${spotSlug}/${postSlug}`;
 
-      actions.createPage({
-        path: `foodspot/${spotSlug}/${visitSlug}`,
-        component: path.resolve(`./src/templates/FoodPost/FoodPost.js`),
-        context: {
-          foodSpotId: id,
-          foodPostId: post.id,
-        },
-      });
-    });
+			actions.createPage({
+				path: postPath,
+				component: path.resolve(`./src/templates/FoodPostPage.js`),
+				context: {
+					currentPath: postPath,
+					foodPostId: post.id,
+					foodSpotId: id,
+					postSlug,
+					spotPath,
+					spotSlug,
+				},
+			});
+		});
 	});
-	
+
 	actions.createRedirect({
 		fromPath: '/foodspot',
 		toPath: '/',

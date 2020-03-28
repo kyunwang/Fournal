@@ -1,0 +1,35 @@
+.highlightImage,
+.highlightMap {
+	width: 80vw;
+	height: 80vw;
+	margin: auto;
+	border-radius: 50%;
+	overflow: hidden;
+	mask-image: -webkit-radial-gradient(white, black); // ios radius fix
+	-webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+.imageWrapper {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 99;
+}
+
+@media all and (min-width: 30rem) {
+	.highlightImage {
+		min-width: 20rem;
+		width: 100%;
+		height: min-content;
+
+		> div {
+			padding-bottom: 100% !important; /* aspect ratio */
+		}
+	}
+
+	.highlightMap {
+		width: 20rem;
+		height: 20rem;
+		width: 100%;
+	}
+}

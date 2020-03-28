@@ -1,34 +1,24 @@
 import styles from './Container.module.scss';
 import PropTypes from 'prop-types';
 import React from 'react';
-import BackButton from '../general/Buttons/BackButton/BackButton';
+import Header from './Header/Header';
 
-
-const Container = props => {
-	const {
-		children,
-		backURL,
-		hasBackButton
-	} = props;
-
-	return (
-		<section className={styles.container}>
-			{children}
-			{/* <BackButton
-				backURL={backURL}
-				hasBackButton={hasBackButton}
-			/> */}
-		</section>
-)};
+const Container = ({ children, title, subTitle }) => (
+	<main className={styles.container}>
+		<Header title={title} subTitle={subTitle} />
+		{children}
+	</main>
+);
 
 Container.propTypes = {
-	hasBackButton: PropTypes.bool,
-	backURL: PropTypes.string,
-}
+	children: PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.node),
+		PropTypes.node,
+	]).isRequired,
+	title: PropTypes.string,
+	subTitle: PropTypes.string,
+};
 
-Container.defaultPropr = {
-	hasBackButton: false,
-	backURL: '/',
-}
+Container.defaultPropr = {};
 
 export default Container;

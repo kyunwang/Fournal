@@ -1,25 +1,63 @@
 .card {
-  height: 8rem;
-  width: 100%;
-  padding: 1rem 1.6rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.12);
-  // box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+	height: 8rem;
+	width: 100%;
+	padding: 1rem 1.6rem;
 
-  &:nth-of-type(1n + 1) {
-    // &:nth-of-type(1n + 1) {
-    margin-bottom: 1.2rem;
-  }
+	h2,
+	p {
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+	}
 
-  p {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    line-height: 1.2;
-  }
+	h2 {
+		-webkit-line-clamp: 1;
+	}
 
-  span {
+	p {
+		-webkit-line-clamp: 2;
+	}
+
+	span {
 		font-size: 0.8rem;
 		font-weight: 300;
-  }
+	}
+
+	&.isActive {
+		height: min-content;
+		margin-bottom: 1.2rem;
+		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.12);
+
+		h2,
+		p {
+			-webkit-line-clamp: initial; // Disable
+		}
+	}
+}
+
+.footerImageWrapper {
+	display: flex;
+
+	button {
+		border: none;
+		padding: 0;
+		background-color: transparent;
+
+		&:nth-of-type(1n + 2) {
+			margin-left: 0.4rem;
+		}
+	}
+}
+
+.footerImage {
+	width: 4rem;
+	height: 4rem;
+	border-radius: 50%;
+	margin-top: 0.8rem;
+}
+
+@media all and (min-width: 30rem) {
+	.card {
+		width: 20rem;
+	}
 }
