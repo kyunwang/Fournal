@@ -1,11 +1,16 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { navigate } from '@reach/router';
 
-
-const InternalLink = ({ children, onClick, newInternalPath, newTitle, newPath }) => {
+const InternalLink = ({
+	className,
+	children,
+	onClick,
+	newInternalPath,
+	newTitle,
+	newPath,
+}) => {
 	// If there is JS enabled - use in page navigating
 	const handleOnClick = event => {
 		navigate(newInternalPath);
@@ -14,7 +19,7 @@ const InternalLink = ({ children, onClick, newInternalPath, newTitle, newPath })
 	};
 
 	return (
-		<Link onClick={handleOnClick} to={newPath}>
+		<Link className={className} onClick={handleOnClick} to={newPath}>
 			{children}
 		</Link>
 	);
@@ -23,7 +28,7 @@ const InternalLink = ({ children, onClick, newInternalPath, newTitle, newPath })
 InternalLink.propTypes = {};
 
 InternalLink.defaultProps = {
-	onClick: () => {}
+	onClick: () => {},
 };
 
 export default InternalLink;

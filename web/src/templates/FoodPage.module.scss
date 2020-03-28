@@ -17,12 +17,12 @@
 	display: none;
 }
 
-.highlight {
+.highlightWrapper {
 	display: flex;
 	align-items: center;
 	flex: 1;
 	max-width: 36rem;
-	padding: 1.2rem 2.4rem 1.2rem 1.2rem;
+	margin-bottom: 1.2rem;
 }
 
 @media all and (min-width: 30rem) {
@@ -42,5 +42,10 @@
 
 	.spotList {
 		display: block;
+	}
+
+	.highlightWrapper {
+		margin: 0;
+		padding: 1.2rem 2.4rem 1.2rem 1.2rem;
 	}
 }

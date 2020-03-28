@@ -48,7 +48,7 @@ const PostList = props => {
 					</div>
 				) : (
 					<InternalLink
-						// className={linkClasses}
+						className={linkClasses}
 						key={id}
 						// to={`${currentPath}/${slug}`}
 						// state={{ fromList: true }}

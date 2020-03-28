@@ -66,7 +66,7 @@ const FoodSpotPage = ({ data: { spots, foodSpot }, pathContext, location }) => {
 				</div>
 
 				<div className={styles.postsWrapper}>
-					<div className={`${styles.listWrapper} ${styles.highlight}`}>
+					<div className={`${styles.listWrapper} ${styles.highlightWrapper}`}>
 						<PostHighlight
 							isHoveringImage={isHoveringImage}
 							activeImageIndex={activeImageIndex}

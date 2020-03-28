@@ -5,6 +5,8 @@
 	margin: auto;
 	border-radius: 50%;
 	overflow: hidden;
+	mask-image: -webkit-radial-gradient(white, black); // ios radius fix
+	-webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
 .imageWrapper {

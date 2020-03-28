@@ -1,5 +1,6 @@
 import styles from '../Card.module.scss';
 import React from 'react';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import NonStretchedImage from '../../general/NonStretchedImage';
 
